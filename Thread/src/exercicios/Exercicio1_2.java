@@ -21,11 +21,15 @@ public class Exercicio1_2 extends Thread
 	
 	public static int parallelSearch(int x, int[] A, int numThreads)
 	{
+		int aux = A.length / numThreads;
+		int[] B = new int[aux];
 		// criando todas as threads
 		for (int i = 0; i < numThreads; i++)
 		{
-			//threadCollection.add(new Exercicio1_2(x, A, 0).start(););
-			new Exercicio1_2(x, A, 0).start();
+			System.arraycopy(A, aux, B, 0, A.length / numThreads);
+			threadCollection.add(new Exercicio1_2(x, A, 0));
+			//new Exercicio1_2(x, A, 0).start();
+			aux = aux + A.length / numThreads;
 		}
 		
 		
