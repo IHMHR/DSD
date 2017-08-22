@@ -18,7 +18,7 @@ public class Exercicio1_2 extends Thread
 		this.x = x;
 		this.A = A;
 		this.num = numThreads;
-		this.resultado = 0;
+		resultado = 0;
 		threadCollection = new ArrayList<Exercicio1_2>();
 		arrayCollection = new ArrayList<int[]>();
 	}
@@ -26,12 +26,12 @@ public class Exercicio1_2 extends Thread
 	public static int parallelSearch(int x, int[] A, int numThreads)
 	{
 		dividirArray(A, numThreads);
-		
+
 		// verificamos se foi dividido
-		for (int i = 0; i < arrayCollection.size(); i++)
+		for (int i = 0; i < arrayCollection.size() - 1; i++)
 		{
-			threadCollection.add(new Exercicio1_2(x, arrayCollection.get(i), 1));
-			threadCollection.get(i).run();
+			System.err.println(threadCollection.add(new Exercicio1_2(x, arrayCollection.get(i), 1)));
+			threadCollection.get(i).start();
 		}
 		
 		loop:
@@ -74,6 +74,7 @@ public class Exercicio1_2 extends Thread
 
 	private static void dividirArray(int[] A, int numThreads)
 	{
+		// PESQUISAR DE i ATÉ Math.min(A.length, i + numThreads)
 		for(int i = 0; i < A.length; i += numThreads)
 		{
 			arrayCollection.add(Arrays.copyOfRange(A, i, Math.min(A.length, i + numThreads)));
