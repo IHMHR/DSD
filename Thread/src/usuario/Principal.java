@@ -6,25 +6,50 @@ import java.util.Random;
 
 import exercicios.Auxiliar;
 import exercicios.Exercicio1_2;
+import exercicios.Exercicio1_4;
 import exercicios.Exercicio1_5;
 
 public class Principal
 {
 	public static void main(String[] args)
 	{
-		
+		final int VALUE = 15;
 		
 		
 		
 		// popular array list
 		List<Integer> a = new ArrayList<Integer>();
-		int[] array = new int[15_000];
-		for (int i = 0; i < 15_000; i++)
+		int[] array = new int[VALUE];
+		for (int i = 0; i < VALUE; i++)
 		{
 			int temp = (int) (i * 1.4);
 			a.add(temp);
 			array[i] = i + 1;
+			array[i] = temp;
 		}
+		array[0] = 22;
+		
+		Exercicio1_4 ex4 = new Exercicio1_4(array);
+		ex4.start();
+		try
+		{
+			ex4.join();
+		}
+		catch (InterruptedException e1)
+		{
+			e1.printStackTrace();
+		}
+		
+		for (int i : ex4.getArray())
+		{
+			System.out.println(i);
+		}
+		
+		
+		System.exit(0);
+		
+		
+		
 		
 		int val = new Random().nextInt(15000);
 		

@@ -1,7 +1,5 @@
 package exercicios;
 
-import java.util.List;
-
 public class Exercicio1_2 extends Thread
 {
 	private int x;
